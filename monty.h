@@ -5,6 +5,11 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdarg.h>
+#include <stdbool.h>
+
+extern int argument;
+extern bool valid;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -22,6 +27,8 @@ typedef struct stack_s
 	struct stack_s *next;
 } stack_t;
 
+extern stack_t *stack;
+
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
@@ -33,5 +40,26 @@ typedef struct stack_s
 typedef struct instruction_s
 {
 	char *opcode;
-	void (*f)(stack_t **stack, unsigned int line_number);
+	void (*f)(stack_t **stack, unsigned int line_num);
 } instruction_t;
+
+/**
+ * struct cmd_s - opcode and line_number
+ * @opcode: ...
+ * @number: ...
+ *
+ */
+typedef struct cmd_s
+{
+	char *opcode;
+	long int number;
+} cmd_t;
+
+void parse_line(cmd_t **cmdl, char *line);
+void execute(cmd_t *cmdl);
+void print_error(int count, ...);
+
+void push(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+
+#endif

@@ -10,33 +10,35 @@
 int main(int argc, char *argv[])
 {
 	size_t len = 0;
-	char *cmdl = NULL;
-	cmd_t *line;
+	char *line = NULL;
+	cmd_t *cmdl;
 	FILE *stream;
-	void (*instruction)(int arg);
+	stack_t *stack = NULL;
 
 	if (argc != 2)
-		print_error("USAGE: monty file\n");
+		print_error(1, "USAGE: monty file\n");
 
 	stream = fopen(argv[1], "r");
 	if (stream == NULL)
-		print_error("Error: Can't open file ",
+		print_error(3, "Error: Can't open file ",
 			    argv[1], "\n");
 
-	line->opcode = NULL;
-	line->number = 0;
-	line->args = 0;
-	while (getline($cmdl, &len, stream) != -1)
+	cmdl = malloc(sizeof(cmd_t));
+	if (cmdl == NULL)
+		print_error(1, "Error: malloc failed\n");
+
+	cmdl->opcode = NULL;
+	cmdl->number = 0;
+	while ((getline(&line, &len, stream)) != -1)
 	{
-		line = parse_line(cmdl);
-		if (line == NULL)
+		parse_line(&cmdl, line);
+		if (cmdl->opcode == NULL)
 			continue;
 
-		instruction = fetch_instruction(line, op_dic);
-		execute(instruction, line);
+		execute(cmdl);
 	}
 
-	free(cmdl);
+	free(line);
 	fclose(stream);
 	return (0);
 }

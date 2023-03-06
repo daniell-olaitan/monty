@@ -19,7 +19,8 @@ void parse_line(cmd_t **cmdl, char *line)
 
 	tmp = strtok(line, "#");
 	(*cmdl)->opcode = strtok(tmp, delim);
-	if ((*cmdl)->opcode == NULL)
+	if ((*cmdl)->opcode == NULL ||
+	    strcmp((*cmdl)->opcode, "nop") == 0)
 		return;
 
 	arg = strtok(NULL, delim);

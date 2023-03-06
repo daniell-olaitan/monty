@@ -1,5 +1,9 @@
 #include "monty.h"
 
+int argument = 0;
+bool valid = false;
+stack_t *stack = NULL;
+
 /**
  * main - starting point of the monty program
  * @argc: number of cmd args
@@ -13,7 +17,6 @@ int main(int argc, char *argv[])
 	char *line = NULL;
 	cmd_t *cmdl;
 	FILE *stream;
-	stack_t *stack = NULL;
 
 	if (argc != 2)
 		print_error(1, "USAGE: monty file\n");

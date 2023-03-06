@@ -10,8 +10,6 @@ void parse_line(cmd_t **cmdl, char *line)
 {
 	char *tmp, *arg, *endptr, *delim = " \n";
 	cmd_t *cmd = *cmdl;
-	int argument = 0;
-	bool valid = false;
 
 	cmd->number++;
 	if (line[0] == '#')
@@ -31,6 +29,7 @@ void parse_line(cmd_t **cmdl, char *line)
 		argument = (int)strtol(arg, &endptr, 10);
 		if (*endptr != '\0')
 			valid = false;
+
 		else
 			valid = true;
 	}

@@ -7,15 +7,15 @@
  */
 void execute(cmd_t *cmdl)
 {
-	int i;
+	int i, len;
 	char str[1024];
 	instruction_t opcodes[] = {
 		{"push", push},
-		{"pop", pop},
-		NULL
+		//{"pop", pop},
 	};
 
-	for (i = 0; opcodes[i] != NULL; ++i)
+	len = sizeof(opcodes);
+	for (i = 0; i < len; ++i)
 	{
 		if (opcodes[i].opcode == cmdl->opcode)
 		{
@@ -24,7 +24,7 @@ void execute(cmd_t *cmdl)
 		}
 	}
 
-	print_error(5, "L", itoa(cmdl->number, str, 10),
+	print_error(5, "L", sprintf(str, "%d", (int)cmdl->number),
 		    ": unknown instruction",
 		    cmdl->opcode, "\n");
 }

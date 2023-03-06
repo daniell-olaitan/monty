@@ -12,7 +12,7 @@ void push(stack_t **stack, unsigned int line_number)
 	stack_t *top, *node;
 
 	if (valid == false)
-		print_error(3, "L", itoa(line_number, str, 10),
+		print_error(3, "L", sprintf(str, "%d", line_number),
 			    ": usage: push integer\n");
 
 	node = malloc(sizeof(stack_t));

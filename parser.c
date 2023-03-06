@@ -9,18 +9,17 @@
 void parse_line(cmd_t **cmdl, char *line)
 {
 	char *tmp, *arg, *endptr, *delim = " \n";
-	cmd_t *cmd = *cmdl;
 
-	cmd->number++;
+	(*cmdl)->number++;
 	if (line[0] == '#')
 	{
-		cmd->opcode = NULL;
+		(*cmdl)->opcode = NULL;
 		return;
 	}
 
 	tmp = strtok(line, "#");
-	cmd->opcode = strtok(tmp, delim);
-	if (cmd->opcode == NULL)
+	(*cmdl)->opcode = strtok(tmp, delim);
+	if ((*cmdl)->opcode == NULL)
 		return;
 
 	arg = strtok(NULL, delim);

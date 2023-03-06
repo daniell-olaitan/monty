@@ -8,23 +8,22 @@
 void execute(cmd_t *cmdl)
 {
 	int i, len;
-	char str[1024];
 	instruction_t opcodes[] = {
 		{"push", push},
-		//{"pop", pop},
+		{"pall", pall},
 	};
 
-	len = sizeof(opcodes);
+	len = sizeof(opcodes) / sizeof(instruction_t);
 	for (i = 0; i < len; ++i)
 	{
-		if (opcodes[i].opcode == cmdl->opcode)
+		if (strcmp(opcodes[i].opcode, cmdl->opcode) == 0)
 		{
 			opcodes[i].f(&stack, (unsigned int)cmdl->number);
 			return;
 		}
 	}
 
-	print_error(5, "L", sprintf(str, "%d", (int)cmdl->number),
-		    ": unknown instruction",
-		    cmdl->opcode, "\n");
+	fprintf(stderr, "L%d: unknown instruction %s\n", (int)cmdl->number,
+		cmdl->opcode);
+	exit(EXIT_FAILURE);
 }

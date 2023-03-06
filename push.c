@@ -8,16 +8,24 @@
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-	char str[1024];
 	stack_t *top, *node;
 
+	if (stack == NULL)
+		return;
+
 	if (valid == false)
-		print_error(3, "L", sprintf(str, "%d", line_number),
-			    ": usage: push integer\n");
+	{
+		fprintf(stderr, "L%d: usage: push integer\n",
+			(int)line_number);
+		exit(EXIT_FAILURE);
+	}
 
 	node = malloc(sizeof(stack_t));
 	if (node == NULL)
-		print_error(1, "Error: malloc failed\n");
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
 
 	node->n = argument;
 	node->next = NULL;

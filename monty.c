@@ -19,16 +19,24 @@ int main(int argc, char *argv[])
 	FILE *stream;
 
 	if (argc != 2)
-		print_error(1, "USAGE: monty file\n");
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
 
 	stream = fopen(argv[1], "r");
 	if (stream == NULL)
-		print_error(3, "Error: Can't open file ",
-			    argv[1], "\n");
+	{
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		exit(EXIT_FAILURE);
+	}
 
 	cmdl = malloc(sizeof(cmd_t));
 	if (cmdl == NULL)
-		print_error(1, "Error: malloc failed\n");
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
 
 	cmdl->opcode = NULL;
 	cmdl->number = 0;

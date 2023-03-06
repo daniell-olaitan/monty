@@ -9,9 +9,8 @@ void free_stack(stack_t *stack)
 {
 	stack_t *tmp, *top;
 
-	tmp = stack;
-	top = tmp;
-	while (tmp != NULL)
+	top = stack;
+	while (top != NULL)
 	{
 		tmp = top->next;
 		free(top);

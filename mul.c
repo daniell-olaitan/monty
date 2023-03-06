@@ -1,12 +1,12 @@
 #include "monty.h"
 
 /**
- * mul - multiplies the 2 top elements of the stack
+ * _mul - multiplies the 2 top elements of the stack
  * @stack:...
  * @line_number:...
  *
  */
-void mul(stack_t **stack, unsigned int line_number)
+void _mul(stack_t **stack, unsigned int line_number)
 {
 	stack_t *result;
 
@@ -28,8 +28,8 @@ void mul(stack_t **stack, unsigned int line_number)
 
 	result->n = (*stack)->next->n * (*stack)->n;
 	result->prev = NULL;
-	pop(stack, line_number);
-	pop(stack, line_number);
+	_pop(stack, line_number);
+	_pop(stack, line_number);
 	result->next = *stack;
 	if (*stack)
 		(*stack)->prev = result;

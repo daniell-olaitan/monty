@@ -1,12 +1,12 @@
 #include "monty.h"
 
 /**
- * swap - swaps two top elements of the stack
+ * _swap - swaps two top elements of the stack
  * @stack:...
  * @line_number:...
  *
  */
-void swap(stack_t **stack, unsigned int line_number)
+void _swap(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp;
 

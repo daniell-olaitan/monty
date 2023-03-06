@@ -1,12 +1,12 @@
 #include "monty.h"
 
 /**
- * add - adds two top elements of the stack
+ * _add - adds two top elements of the stack
  * @stack:...
  * @line_number:...
  *
  */
-void add(stack_t **stack, unsigned int line_number)
+void _add(stack_t **stack, unsigned int line_number)
 {
 	stack_t *result;
 
@@ -28,8 +28,8 @@ void add(stack_t **stack, unsigned int line_number)
 
 	result->n = (*stack)->n + (*stack)->next->n;
 	result->prev = NULL;
-	pop(stack, line_number);
-	pop(stack, line_number);
+	_pop(stack, line_number);
+	_pop(stack, line_number);
 	result->next = *stack;
 	if (*stack)
 		(*stack)->prev = result;

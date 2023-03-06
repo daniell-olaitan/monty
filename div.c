@@ -1,12 +1,12 @@
 #include "monty.h"
 
 /**
- * div - divides top element from the 2nd top element of the stack
+ * _div - divides top element from the 2nd top element of the stack
  * @stack:...
  * @line_number:...
  *
  */
-void div(stack_t **stack, unsigned int line_number)
+void _div(stack_t **stack, unsigned int line_number)
 {
 	stack_t *result;
 
@@ -21,7 +21,7 @@ void div(stack_t **stack, unsigned int line_number)
 
 	if ((*stack)->n == 0)
 	{
-		fprintf(stderr, "L%u: division bt zero\n,
+		fprintf(stderr, "L%u: division by zero\n",
 			line_number);
 		exit(EXIT_FAILURE);
 	}
@@ -35,8 +35,8 @@ void div(stack_t **stack, unsigned int line_number)
 
 	result->n = (*stack)->next->n / (*stack)->n;
 	result->prev = NULL;
-	pop(stack, line_number);
-	pop(stack, line_number);
+	_pop(stack, line_number);
+	_pop(stack, line_number);
 	result->next = *stack;
 	if (*stack)
 		(*stack)->prev = result;

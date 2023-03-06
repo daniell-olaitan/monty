@@ -9,10 +9,16 @@ void execute(cmd_t *cmdl)
 {
 	int i, len;
 	instruction_t opcodes[] = {
-		{"push", push},
-		{"pall", pall},
-		{"pint", pint},
-		{"pop", pop},
+		{"push", _push},
+		{"pall", _pall},
+		{"pint", _pint},
+		{"pop", _pop},
+		{"add", _add},
+		{"mul", _mul},
+		{"swap", _swap},
+		{"div", _div},
+		{"sub", _sub},
+		{"mod", _mod}
 	};
 
 	len = sizeof(opcodes) / sizeof(instruction_t);

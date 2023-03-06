@@ -1,12 +1,12 @@
 #include "monty.h"
 
 /**
- * push - implements monty push instruction
+ * _push - implements monty push instruction
  * @stack: ...
  * @line_number: ...
  *
  */
-void push(stack_t **stack, unsigned int line_number)
+void _push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *top, *node;
 

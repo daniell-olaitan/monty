@@ -1,12 +1,12 @@
 #include "monty.h"
 
 /**
- * pop - removes the top of the stack
+ * _pop - removes the top of the stack
  * @stack:...
  * @line_number:...
  *
  */
-void pop(stack_t **stack, unsigned int line_number)
+void _pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp;
 

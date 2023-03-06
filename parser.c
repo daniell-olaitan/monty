@@ -8,7 +8,7 @@
  */
 void parse_line(cmd_t **cmdl, char *line)
 {
-	char *tmp, *arg, *endptr, *delim = " \n";
+	char *tmp, *arg, *endptr, *delim = " \n\t";
 
 	(*cmdl)->number++;
 	if (line[0] == '#')

@@ -40,4 +40,6 @@ void _div(stack_t **stack, unsigned int line_number)
 	result->next = *stack;
 	if (*stack)
 		(*stack)->prev = result;
+
+	*stack = result;
 }

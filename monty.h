@@ -57,7 +57,7 @@ typedef struct cmd_s
 
 void parse_line(cmd_t **cmdl, char *line);
 void execute(cmd_t *cmdl);
-void print_error(int count, ...);
+void free_stack(stack_t *stack);
 
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);

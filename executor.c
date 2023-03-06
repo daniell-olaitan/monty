@@ -18,7 +18,9 @@ void execute(cmd_t *cmdl)
 		{"swap", _swap},
 		{"div", _div},
 		{"sub", _sub},
-		{"mod", _mod}
+		{"mod", _mod},
+		{"pchar", _pchar},
+		{"pstr", _pstr}
 	};
 
 	len = sizeof(opcodes) / sizeof(instruction_t);

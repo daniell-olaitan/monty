@@ -23,8 +23,9 @@ void execute(cmd_t *cmdl)
 		{"pstr", _pstr},
 		{"rotl", _rotl},
 		{"rotr", _rotr},
-		//{"stack", _stack},
-		//{"queue", _queue}
+		/*{"stack", _stack},
+		 *{"queue", _queue}
+		 */
 	};
 
 	len = sizeof(opcodes) / sizeof(instruction_t);

@@ -1,0 +1,13 @@
+if (( $# > 0 )); then
+   if [[ !(-e "$1") ]]; then
+      echo "#!/usr/bin/node" > "$1"
+      chmod u+x "$1"
+   fi
+   emacs "$1"
+
+   if [[ -e "${1}~" ]]; then
+      rm "${1}~"
+   fi
+else
+   echo "invalid argument"
+fi
